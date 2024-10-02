@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RockbrokerBackendApplication {
+public class RockBroker {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RockbrokerBackendApplication.class, args);
+		SpringApplication.run(RockBroker.class, args);
 	}
 
 }
