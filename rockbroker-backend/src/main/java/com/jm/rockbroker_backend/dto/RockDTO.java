@@ -1,9 +1,6 @@
 package com.jm.rockbroker_backend.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 // This class is used to transfer the Data between a client to a server (response from rest APIs)
 
@@ -11,7 +8,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RockDto {
+@Data
+public class RockDTO {
     private Long id;
     private String name;
     private String ticker;
