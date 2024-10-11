@@ -1,16 +1,15 @@
 package com.jm.rockbroker_backend.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "rocks")
 public class Rock {
     @Id
@@ -25,5 +24,9 @@ public class Rock {
 
     @Column(name = "price", precision = 2, nullable = false)
     private Double price;
+
+    // Relationship between a Rock and the users who own the rock as well as the quantity
+    @OneToMany(mappedBy = "rock", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<RockOwnership> rockOwnerships;
 
 }
