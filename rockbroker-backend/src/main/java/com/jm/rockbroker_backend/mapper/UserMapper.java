@@ -12,7 +12,8 @@ public class UserMapper {
                 user.getFirstName(),
                 user.getLastName(),
                 user.getUserName(),
-                user.getEmail()
+                user.getEmail(),
+                user.getPassword()
         );
     }
 
@@ -23,7 +24,7 @@ public class UserMapper {
                 userDto.getLastName(),
                 userDto.getUserName(),
                 userDto.getEmail(),
-                null,
+                userDto.getPassword(),
                 null // Rock ownerships will be set later if needed
         );
     }
