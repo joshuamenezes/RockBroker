@@ -1,7 +1,7 @@
 package com.jm.rockbroker_backend.handler;
 
+import com.jm.rockbroker_backend.exceptions.NotFoundException;
 import com.jm.rockbroker_backend.factories.ErrorResponseFactory;
-import com.jm.rockbroker_backend.util.TimeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -31,6 +31,13 @@ public class GlobalExceptionHandler {
         logger.error("Invalid argument: {}, Request Details: {}", ex.getMessage(), request.getDescription(false), ex);
         ErrorResponse err = ErrorResponseFactory.createErrorResponse("Invalid argument(s) in request body.", HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Object> handleNotFoundException(NotFoundException ex, WebRequest request) {
+        logger.error("Invalid argument: {}, Request Details: {}", ex.getMessage(), request.getDescription(false), ex);
+        ErrorResponse err = ErrorResponseFactory.createErrorResponse("No %s with the given id could be found".formatted(ex.getName()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
