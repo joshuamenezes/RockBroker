@@ -22,7 +22,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
-        UserDTO savedUser = userService.createUser(userDTO);
+        UserDTO savedUser;
+        savedUser = userService.createUser(userDTO);
+        // TODO: Update the response type because we dont want to send the entire userDTO to the frontend
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 }
