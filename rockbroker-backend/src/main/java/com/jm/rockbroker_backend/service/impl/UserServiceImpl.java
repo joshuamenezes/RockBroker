@@ -2,6 +2,7 @@ package com.jm.rockbroker_backend.service.impl;
 
 import com.jm.rockbroker_backend.dto.UserDTO;
 import com.jm.rockbroker_backend.entity.User;
+import com.jm.rockbroker_backend.exceptions.ResourceNotFoundException;
 import com.jm.rockbroker_backend.mapper.UserMapper;
 import com.jm.rockbroker_backend.repository.UserRepository;
 import com.jm.rockbroker_backend.service.UserService;
@@ -23,6 +24,12 @@ public class UserServiceImpl implements UserService {
         // Save the user
         User savedUser = userRepository.save(user);
         return UserMapper.mapToUserDto(savedUser);
+    }
+
+    @Override
+    public UserDTO getUserById(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", userId));
+        return UserMapper.mapToUserDto(user);
     }
 
     @Override

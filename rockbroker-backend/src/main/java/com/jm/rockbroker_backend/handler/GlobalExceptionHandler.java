@@ -1,6 +1,6 @@
 package com.jm.rockbroker_backend.handler;
 
-import com.jm.rockbroker_backend.exceptions.NotFoundException;
+import com.jm.rockbroker_backend.exceptions.ResourceNotFoundException;
 import com.jm.rockbroker_backend.factories.ErrorResponseFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +33,10 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<Object> handleNotFoundException(NotFoundException ex, WebRequest request) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         logger.error("Invalid argument: {}, Request Details: {}", ex.getMessage(), request.getDescription(false), ex);
-        ErrorResponse err = ErrorResponseFactory.createErrorResponse("No %s with the given id could be found".formatted(ex.getName()), HttpStatus.NOT_FOUND);
+        ErrorResponse err = ErrorResponseFactory.createErrorResponse("No %s with the given id could be found".formatted(ex.getEntity()), HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
 
