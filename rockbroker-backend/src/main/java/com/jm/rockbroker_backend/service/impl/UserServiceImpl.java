@@ -33,6 +33,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO getByUserName(String userName) {
+        User user = userRepository.findByUserName(userName).
+                orElseThrow(() -> new ResourceNotFoundException("User", "Username", userName));
+        return UserMapper.mapToUserDto(user);
+    }
+
+    @Override
+    public UserDTO getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email).
+                orElseThrow(() -> new ResourceNotFoundException("User", "Email", email));
+        return UserMapper.mapToUserDto(user);
+    }
+
+    @Override
     public Boolean validatePassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }

@@ -20,14 +20,26 @@ public class UserController {
     public ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
         UserDTO savedUser;
         savedUser = userService.createUser(userDTO);
-        // TODO: Update the response type because we dont want to send the entire userDTO to the frontend
+        // TODO: Update the response type because we dont want to send the entire userDTO to the frontend (since it incldues the password)
 
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @GetMapping("{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long userId) {
-        UserDTO userDto = userService.getUserById(userId);
-        return ResponseEntity.ok(userDto);
+        UserDTO user = userService.getUserById(userId);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/username/{userName}")
+    public ResponseEntity<UserDTO> getByUserName(@PathVariable String userName) {
+        UserDTO user = userService.getByUserName(userName);
+        return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UserDTO> getByEmail(@PathVariable String email) {
+        UserDTO user = userService.getUserByEmail(email);
+        return ResponseEntity.ok(user);
     }
 }
