@@ -14,6 +14,7 @@
 * [General Tutorial I've been following](https://www.youtube.com/watch?v=s0D1AvtvN4w&list=PLGRDMO4rOGcNLnW1L2vgsExTBg-VPoZHr&index=5&ab_channel=JavaGuides)
 * [General Security Management](https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html#authentication-password-storage-configuration)
 * [Bypassing Security for Specific URLs](https://www.geeksforgeeks.org/spring-security-security-none-filters-none-access-permitall/)
+* The service layer utilizes the repository (basic queries) to retrieve data
 
 ### Entity Management
 * [Entity Column Docs](https://jakarta.ee/specifications/persistence/2.2/apidocs/javax/persistence/column)
