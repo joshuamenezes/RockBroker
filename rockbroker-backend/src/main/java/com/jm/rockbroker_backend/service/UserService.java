@@ -11,8 +11,12 @@ public interface UserService {
 
     UserDTO updateUser(Long userId, UserDTO updatedUserInfo);
 
+    void deleteUser(Long userId);
+
+    // The getByUserName and getUserByEmail are most likely going to remain helper methods, since they don't need to be endpoints
     UserDTO getByUserName(String userName);
 
     UserDTO getUserByEmail(String email);
+
     Boolean validatePassword(String rawPassword, String encodedPassword);
 }

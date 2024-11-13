@@ -44,15 +44,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @GetMapping("{userName}")
-    public ResponseEntity<UserDTO> getByUserName(@PathVariable String userName) {
-        UserDTO user = userService.getByUserName(userName);
-        return ResponseEntity.ok(user);
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long userId) {
+        userService.deleteUser(userId);
+        return ResponseEntity.ok("User with id %d successfully deleted.".formatted(userId));
     }
 
-    @GetMapping("{email}")
-    public ResponseEntity<UserDTO> getByEmail(@PathVariable String email) {
-        UserDTO user = userService.getUserByEmail(email);
-        return ResponseEntity.ok(user);
-    }
 }

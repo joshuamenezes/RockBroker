@@ -59,6 +59,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void deleteUser(Long userId) {
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("No User exists with id %d.".formatted(userId)));
+
+        userRepository.delete(existingUser);
+    }
+
+    @Override
     public UserDTO getByUserName(String userName) {
         User user = userRepository.findByUserName(userName)
                 .orElseThrow(() -> new ResourceNotFoundException("No User exists with username %s.".formatted(userName)));
