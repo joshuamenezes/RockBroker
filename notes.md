@@ -43,4 +43,8 @@
 * [AWS](https://www.youtube.com/watch?v=GGPPkUcHleQ&ab_channel=DanVega)
 
 ### Frontend Integration
-* https://developer.okta.com/blog/2022/06/17/simple-crud-react-and-spring-boot
+* https://www.youtube.com/watch?v=pYaamz6AyvU&ab_channel=DaveGray
+
+### CICD:
+* https://www.youtube.com/watch?v=PvwOxdyvSsg&ab_channel=lemoncode21
+* https://www.youtube.com/watch?app=desktop&v=UtEHSngmdHA&ab_channel=BoualiAli
